@@ -4,10 +4,12 @@ YouTube, the second most popular global website, is widely recognized as the top
 
 This is a simple YouTube video downloader that allows you to download videos from YouTube in a variety of formats.
 
-Requirements
+Requirements:
+
     Python 3.6 or later
     The pytube library
-Installation
+Installation:
+
     pip install pytube
 
 Usage
