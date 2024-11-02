@@ -1,15 +1,13 @@
-import pytube
+import yt_dlp
 
-video_url = input("Enter the link :")
-youtube_object = pytube.YouTube(video_url)
-#video_stream = youtube_object.streams.get_highest_resolution()
+url = input("Enter the link: ")
+ydl_opts = {
+    'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]',  # Download best video up to 1080p
+    'merge_output_format': 'mp4'  # Ensures the final file is in mp4 format after merging
+}
 
-print(youtube_object.title)
-video_stream = youtube_object.streams.all()
-lst = list(enumerate(video_stream))
-for i in lst:
-    print(i)
-print()
-strm = int(input("Enter which resulotion :"))
-video_stream[strm].download()
-print("*** Download Successfully ***")
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    info = ydl.extract_info(url, download=True)
+    print("Title:", info.get('title'))
+    print("Download complete!")
+
